@@ -10,7 +10,8 @@
 /**** ALL THINGS OBJECT-RELATED ****/
 
 /* 
-	Because objects are organized not by index but by keys, JavaScript has a different (and very simple!) way to loop through an object's properties. It's called a "for...in loop".
+	Because objects are organized not by index but by keys, JavaScript has a different (and very simple!)
+	 way to loop through an object's properties. It's called a "for...in loop".
 
  Note: you can't use dot notation with a for...in loop, just bracket notation.
 */
@@ -30,7 +31,8 @@ for (let someKey in sunsetDiner) {
 	console.log(sunsetDiner[someKey]);
 }
 
-// Did you notice that the value for knownFor is an array? What if we need to loop through that as well? Let's put a regular for loop (for arrays) inside the for...in loop (for objects).
+// Did you notice that the value for knownFor is an array? What if we need to loop through that as well?
+//  Let's put a regular for loop (for arrays) inside the for...in loop (for objects).
 
 // Let's say we don't know which keys have arrays, but we need to print only the elements in any arrays found. We'll use a conditional with the helpful Array method .isArray() to see if the key holds an array in the first place, then loop to print the array's contents if that evaluates to true.
 for (let aKey in sunsetDiner) {
@@ -85,15 +87,49 @@ for (let restaurant of restaurants) {
 /*
 	Create two objects representing different local attractions (zoo, gardens, museums, etc), each with the following properties: name, location, adultTicketPrice, childTicketPrice, and famousFeatures (array of three strings). Be creative! Place the objects in an array.
 */
+let Sixflags = {
+	name: "Six flags",
+	location: "Chicao, IL",
+	Entertainment : "Fun ride park for kids and adult",
+	knownFor: ["Rides", "Attactions", "Water park"],
+	priceRating: "$$"
+};
+let Disney = {
+	name: "Disney",
+	location: "Orlando, FL",
+	Entertainment : "Theme park for kids and adult",
+	knownFor: ["Magic Kingdom", "Animal plannet", "Epcot spehere"],
+	priceRating: "$$$"
+};
+
+
+let Universal = {
+	name: "Universal  Studio",
+	location: "Hollywood, CA",
+	Entertainment : "Holliwood Theme park for kids and adult",
+	knownFor: ["Jurassic World the Ride", "Despicable Me Minion Mayhem", "The Wizarding World of Harry Potter"],
+	priceRating: "$$$"
+};
 
 // TODO: create objects and put them in an array
+
+let attractions=[Sixflags,Disney,Universal];
 
 /*
 	Loop through the array, then within that for loop, use a for...in loop to grab values from each key and print them to the console. If you come across a key storing an array, print each element in the array instead of the array itself. Remember that you need a new index variable with each nested FOR loop (i, j are common).
 
 	NOTE: This is a tough one to think through when you're new at this. If you get completely stuck, reference the solution that accompanies this starter code. But make an effort to figure it out yourself first!
 */
-
+for (let somekey1 in Disney) {
+	console.log(Disney[somekey1]);
+			if (Array.isArray(Disney[somekey1])) {
+			for (el of Disney[somekey1]) {
+				console.log(el);
+			}
+			
+		
+		}
+	}
 // TODO: use nested loops to print values inside objects
 
 /*
@@ -107,3 +143,6 @@ for (let restaurant of restaurants) {
 
 // TODO: Print a template literal
 
+for (let park of attractions) {
+    console.log(`\nIf you're looking for adventure, don't miss ${park.name} in ${park.location}. It's best known for its ${park.Entertainment}. Must-see attractions include ${park.knownFor[0]}, ${park.knownFor[1]}, and ${park.knownFor[2]}. \nPrice rating: ${park.priceRating}\n`);
+}
